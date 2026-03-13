@@ -74,7 +74,7 @@ st.pyplot(fig2)
 # Section 3 - Mood by Genre
 st.header("📊 Mood (Valence) by Genre")
 
-genre_mood = df_genres.groupby("track_genre")["valence"].mean().sort_values()
+genre_mood = df_genres.drop_duplicates(subset="track_genre").groupby("track_genre")["valence"].mean().sort_values()
 colors = cm.plasma(np.linspace(0, 1, len(genre_mood)))
 
 fig3, ax3 = plt.subplots(figsize=(10, 6))
