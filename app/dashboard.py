@@ -6,8 +6,9 @@ import numpy as np
 import matplotlib.cm as cm
 
 #Load the data
-df=pd.read_csv("data/dataset.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/abhisyanth1701/spotify-analytics/master/data/dataset.csv")
 df=df.dropna()
+df = df.drop_duplicates()
 
 #Dashboard title
 st.title("🎵🎶Spotify Music Trends Analyzer")
