@@ -74,11 +74,11 @@ st.pyplot(fig2)
 # Section 3 - Mood by Genre
 st.header("📊 Mood (Valence) by Genre")
 
-genre_mood = df_genres.drop_duplicates(subset="track_genre").groupby("track_genre")["valence"].mean().sort_values()
+genre_mood = df_genres.groupby("track_genre")["valence"].mean().sort_values()
 colors = cm.plasma(np.linspace(0, 1, len(genre_mood)))
 
 fig3, ax3 = plt.subplots(figsize=(10, 6))
-genre_mood.plot(kind="barh", color=colors, ax=ax3)
+genre_mood.reset_index(drop=True).plot(kind="barh", color=colors, ax=ax3)
 ax3.set_title("Average Mood (Valence) by Genre")
 ax3.set_xlabel("Valence Score (0=Sad, 1=Happy)")
 ax3.set_ylabel("Genre")
